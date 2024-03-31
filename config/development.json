@@ -1,0 +1,39 @@
+{
+  "port": 3000,
+  "hostAddress": "localhost:3000/",
+  "databaseHost": "localhost",
+  "databasePort": "27017",
+  "databaseName": "shopping-database",
+  "jwtsecret": "nodejwt",
+  "jwtresetsecret": "nodejwt",
+  "nodemailer": {
+    "service": "gmail",
+    "user": "no-replymailer@mobiloitte.com",
+    "pass": "%FEy=9FF@"
+  },
+  "jwtOptions": {
+    "expiresIn": "24h"
+  },
+  "swaggerDefinition": {
+    "info": {
+      "title": "development-of-cryptobot-21074018-node-pune",
+      "version": "2.0",
+      "description": "development-of-cryptobot-21074018-node API Docs"
+    },
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+      "tokenauth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+ 
+  "cloudinary": {
+    "cloud_name": "mobiloittetech",
+    "api_key": "917389355349765",
+    "api_secret": "4LHCjazOQnnsjMZKTX5nuG5txRs"
+  },
+  "OTP_TIME_MINUTE": 3
+}

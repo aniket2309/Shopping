@@ -1,0 +1,412 @@
+definitions:
+  securitySchemes:
+    tokenauth:
+      type: basic
+      description: bearer auth
+      name: Authorization
+      in: header
+    demouser:
+      type: basic
+  #-------------------------------------------------------------------
+  #---------------------------ADMIN----------------------------------
+  #-------------------------------------------------------------------
+  userSignup:
+    required:
+      - email
+      - javaUID
+    properties:
+      email:
+        type: string
+      javaUID:
+        type: number
+
+  verifyOTP:
+    required:
+      - email
+      - otp
+    properties:
+      email:
+        type: string
+      otp:
+        type: string
+
+  resendOTP:
+    required:
+      - email
+    properties:
+      email:
+        type: string
+
+  forgotPassword:
+    required:
+      - email
+    properties:
+      email:
+        type: string
+
+  resetPassword:
+    required:
+      - email
+      - password
+      - confirmPassword
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      confirmPassword:
+        type: string
+
+        
+  userLogin:
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+      password: 
+        type: string
+
+  loginAdmin:
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+      password: 
+        type: string
+          
+
+  socialLogin:
+    required:
+      - socialId
+      - socialType
+      - countryCode
+      - mobileNumber
+      - email
+    properties:
+      socialId:
+        type: string
+      socialType:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      countryCode:
+        type: string
+      mobileNumber:
+        type: string
+      email:
+        type: string
+      deviceToken:
+        type: string
+
+  updateProfile:
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      countryCode:
+        type: string
+      mobileNumber:
+        type: string
+      email:
+        type: string
+      deviceToken:
+        type: string
+  
+
+  changePassword:
+    required:
+      - oldPassword
+      - newPassword
+    properties:
+      oldPassword:
+        type: string
+      newPassword: 
+        type: string
+
+  #-------------------------------------------------------------------
+  #---------------------------Wallet----------------------------------
+  #-------------------------------------------------------------------
+
+  connectWallet:
+    required:
+      - uid
+    properties:
+      uid:
+        type: string
+      apiKey:
+        type: string
+      secretKey:
+        type: string
+      passphrase:
+        type: string
+      customerId:
+        type: string
+      tradePassword:
+        type: string
+
+  #-------------------------------------------------------------------
+  #---------------------------Triangular Arbitrage----------------------------------
+  #-------------------------------------------------------------------
+
+  triangularProfitPaths:
+    required:
+      - connectedExchangeId
+      - startToken
+      - capital
+      - profit
+      - depth
+    properties:
+      connectedExchangeId:
+        type: string
+      startToken:
+         type: array
+         items:
+            type: string  
+      capital:
+        type: number
+      profit:
+        type: number
+      depth:
+        type: number
+        enum: [3,4,5]
+        default: 3
+
+  triangularFilterProfitPaths:
+    required:
+      - uid
+      - coins
+      - capital
+      - depth
+    properties:
+      uid:
+         type: array
+         items:
+            type: string
+      coins:
+         type: array
+         items:
+            type: string
+      capital:
+        type: number
+      depth:
+        type: number
+        enum: [3,4,5]
+        default: 3
+
+
+  triangularTradePaths:
+    required:
+      - exchangeName
+      - capital
+      - start
+      - profit
+      - depth
+    properties:
+      exchangeName:
+        type: string
+      capital:
+        type: number
+      start:
+        type: string
+      expectedProfit:
+        type: number
+      strategy:
+       type: array
+       items:
+         type: object
+         properties:
+           pairName:
+            type: string
+            enum: [buy,sell]
+           price:
+            type: number
+
+  autoTradeOnOff:
+    properties:
+      exchangeUID:
+        type: array
+        items:
+            type: string
+      capital:
+        type: number
+
+    
+#-------------------------------------------------------------------
+#---------------------------Direct Arbitrage----------------------------------
+#-------------------------------------------------------------------
+  directProfitPaths:
+    required:
+      - connectedExchangeId1
+      - connectedExchangeId2
+      - startToken
+      - capital
+    properties:
+      connectedExchangeId1:
+        type: string
+      connectedExchangeId2:
+        type: string
+      startToken:
+         type: array
+         items:
+            type: string 
+      capital:
+        type: number
+  
+
+
+  directFilterProfitPaths:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string
+      startToken:
+         type: array
+         items:
+            type: string 
+      capital:
+        type: number
+
+
+
+  directtradeProfitPaths:
+    required:
+      - connectedExchangeId1
+      - connectedExchangeId2
+      - startToken
+      - capital
+    properties:
+      base:
+        type: string
+      pair:
+        type: string
+      buy :
+        type: string
+      exchange1_price:
+        type: string
+      sell :
+        type: string
+      exchange2_price:
+        type: string
+      capital:
+        type: number
+
+  directautoTradeOnOff:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string 
+      capital:
+        type: number      
+
+  intraFilterProfitPaths:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string
+      startToken:
+         type: array
+         items:
+            type: string 
+      capital:
+        type: number
+      
+
+  intratradeProfitPaths:
+    required:
+      - connectedExchangeId1
+      - connectedExchangeId2
+      - startToken
+      - capital
+    properties:
+      base:
+        type: string
+      pair:
+        type: string
+      buy :
+        type: string
+      exchange1_price:
+        type: string
+      sell :
+        type: string
+      exchange2_price:
+        type: string
+      capital:
+        type: number
+    
+  intraautoTradeOnOff:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string 
+      capital:
+        type: number          
+
+  loopFilterProfitPaths:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string
+      exchange3:
+        type: array
+        items:
+            type: string
+      startToken:
+         type: array
+         items:
+            type: string 
+      capital:
+        type: number
+
+
+  loopautoTradeOnOff:
+    properties:
+      exchange1:
+        type: array
+        items:
+            type: string
+      exchange2:
+        type: array
+        items:
+            type: string
+      exchange3:
+        type: array
+        items:
+            type: string 
+      capital:
+        type: number
+
+  
+
+
