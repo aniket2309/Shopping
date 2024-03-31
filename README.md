@@ -29,19 +29,4 @@ This project is a simple shopping portal built with Node.js and Express, featuri
 
 The API documentation is provided using Swagger UI. Once the server is running, you can access the API documentation at `http://localhost:3000/api-docs`.
 
-## API Endpoints
-
-The following endpoints are available:
-
-- **GET /tasks**: Fetch all tasks.
-- **GET /tasks/{taskId}**: Fetch a specific task by ID.
-- **POST /tasks**: Create a new task.
-- **PUT /tasks/{taskId}**: Update a task by ID.
-- **DELETE /tasks/{taskId}**: Delete a task by ID.
-
-For detailed information on request and response parameters, refer to the API documentation.
-
-## Folder Structure
-
-The project has the following folder structure:
 
